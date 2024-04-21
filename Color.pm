@@ -19,6 +19,10 @@ sub _init {
 
 	$self->{'_xml'} = $xml;
 
+	$self->css_src([{
+		'link' => 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css',
+		'media' => 'all',
+	}]);
 	$self->script_js([<<"END"]);
 	const escapeHtml = (html) => {
 		return html
@@ -35,18 +39,8 @@ sub _init {
 		hljs.highlightElement(xmlContainer);
 	});
 END
-
-	return;
-}
-
-sub _prepare {
-	my $self = shift;
-
-	$self->css_src([{
-		'link' => 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css',
-		'media' => 'all',
-	}]);
 	$self->script_js_src(['https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js']);
+
 
 	return;
 }
